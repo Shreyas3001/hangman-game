@@ -1,0 +1,32 @@
+from random import choice
+
+
+
+def word_generator():
+
+    word_list = ["india" , "jammukashmir" , "delhi","hyderabad","vizag","orissa","tirupathi","tamilnadu","andhrapradesh","arunachalpradesh","assam"]
+    return choice(word_list)
+
+
+word= word_generator()
+guessed =""
+turns = int(len(word)*1.5)
+while(True):
+    print("You are left with {} turns\n".format(turns))
+    inp = input("Make a guess\n")
+    turns = turns -1
+    if inp in word:
+        guessed = guessed + inp
+    unguessed_char = 0
+    for i in word:
+        if i in guessed:
+            print(i , end =" ")
+        else:
+            unguessed_char +=1
+            print("*", end="")
+    if unguessed_char == 0:
+        print("Hurray!! you won:):)")
+        break
+    if turns==0:
+        print("ran out of attempts\n")
+        break
